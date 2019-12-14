@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.lzufe.dao.mapper.StudentMapper">
+<select id="selectById" resultType="student" parameterType="Integer">
+    select  * from student where id=#{studentid}
+</select>
+
+ <select id="selectByPage" resultType="student" parameterType="map">
+    select  student.*,classinfo.classname where student.classid=classid
+ </select>
+
+<insert id="save" parameterType="student" >
+    insert  into student (stuname,stuage,gender,hobbies,classid)values(#{stuname},#{stuage},#{gneder},#{hobbies},#{classid})
+</insert>
+<delete id="delteById"  parameterType="Integer">
+    delete from student where studentid=#{studentid}
+</delete>
+
+ <update id="update" parameterType="student" >
+    update student set stuName=#{stuname},stuAge=#{stuage},gender=#{gender},hobbies=#{hobbies},classid=#{classid} where studentid=#{studentid}
+ </update>
+
+
+</mapper>
